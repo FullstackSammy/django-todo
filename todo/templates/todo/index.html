@@ -2,8 +2,9 @@
 {% load static %}
 
 {% block content %}
-<h1>HELLO!</h1>
-    <a href="{% url 'tasks' %}">
-        Go To Tasks
-    </a>
+<div class="container py-10 px-10 mx-0 min-w-full flex flex-col items-center">
+    <h1 class="gradient-text text-5xl mb-3 text-black">Welcome to ToDo</h1>
+    <p class="gradient-text text-black">A to-do app made by Samuel Näsström</p>
+    <a href="{% url 'tasks' %}" class="background-gradient text-white hover:bg-blue-400 font-bold py-2 px-4 mt-3 rounded">Go To Tasks</a>
+  </div>
 {% endblock content %}

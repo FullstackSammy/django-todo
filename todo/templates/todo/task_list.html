@@ -1,52 +1,80 @@
-{% extends "todo/base.html" %}
-{% load static %}
+{% extends "todo/base.html" %} {% load static %} {% block content %}
+<h1 class="gradient-text">TASKS</h1>
 
-
-{% block content %}
-<h1>TASKS</h1>
-
-<hr>
-
-<ul>
-    {% for task in object_list  %}
-        {% if not task.completed %}
-            <li>
-                <input type="checkbox" name="" id="" default:"true">{{ task.title }}</input>
-                |
-                <div class="btn-group text-dark" role="group" aria-label="Basic example">
-                    <button type="button" class="btn btn-primary"><a href="{% url 'task-detail' task.pk %}">Details</a></button>
-                    <button type="button" class="btn btn-primary"><a href="{% url 'task-edit' task.pk %}">Edit</a></button>
-                    <button type="button" class="btn btn-primary"><a href="{% url 'task-delete' task.pk %}">Delete</a></button>
-              </div>
-            </li>
-        {% endif %}
-    {% endfor %}
+<hr hr class="my-2">
+{% for task in object_list %} {% if not task.completed %}
+<ul role="list" class="divide-y divide-gray-100 ">
+  <li class="flex justify-between gap-x-6 py-5 px-3 border border-gray-200 rounded dark:border-gray-700 my-2 background-gradient">
+    <div class="flex min-w-0 gap-x-4 ">
+      <div class="min-w-0 flex-auto">
+        <p class="text-sm font-semibold leading-6 text-gray-900">
+          <a href="{% url 'task-detail' task.pk %}">{{ task.title }}</a> 
+          |
+          <a
+            class=" border border-black-200 rounded dark:border-gray-700 background-gradient bg-blue-500 hover:bg-blue-700 text-white font-bold mx-2 py-1 px-2 rounded-full"
+            href="{% url 'task-edit' task.pk %}"
+            >Edit</a
+          >
+          <a
+            class="background-gradient text-white font-bold py-1 px-2 rounded-full"
+            href="{% url 'task-delete' task.pk %}"
+            >Delete</a
+          >
+        </p>
+        <p class="mt-1 truncate text-xs leading-5 text-gray-500">
+          Description: {{ task.description }}
+        </p>
+      </div>
+    </div>
+    <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
+      <p class="text-sm leading-6 text-gray-900">
+        Priority: {{ task.priority }}
+      </p>
+      <p class="mt-1 text-xs leading-5 text-gray-500">
+        Deadline: {{ task.deadline }}
+      </p>
+    </div>
+  </li>
 </ul>
-<hr>
-<h1>COMPLETED TASKS</h1>
-<ul>
-    {% for task in object_list %}
-        {% if task.completed %}
-        <li>
-            <s>
-                {{ task.title }}
-            </s>
-            |
-            <div class="btn-group text-dark" role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-primary"><a href="{% url 'task-detail' task.pk %}">
-                    Details
-                    </a></button>
-                <button type="button" class="btn btn-primary"><a href="{% url 'task-edit' task.pk %}">
-                    Edit
-                    </a></button>
-                <button type="button" class="btn btn-primary"><a href="{% url 'task-delete' task.pk %}">
-                    Delete
-                </a></button>
-              </div>
-        </li>
-        {% endif %}
-    {% endfor %}
+{% endif %} {% endfor %} {% for task in object_list %} {% if task.completed %}
+<h1 id="completed">COMPLETED TASKS</h1>
+<hr class="my-2">
+<ul role="list" class="divide-y divide-gray-100">
+  <li class="flex justify-between gap-x-6 py-5 px-3 border border-gray-200 rounded dark:border-gray-700 my-2 background-gradient">
+    <div class="flex min-w-0 gap-x-4">
+      <div class="min-w-0 flex-auto">
+        <s class="text-sm font-semibold leading-6 text-gray-900">
+          {{ task.title }}
+        </s>
+        <p class="mt-1 truncate text-xs leading-5 text-gray-500">
+          Description: {{ task.description }}
+        </p>
+      </div>
+    </div>
+    <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
+      <div class="flex min-w-0 gap-x-4">
+        <div class="min-w-0 flex-auto">
+          <a
+            class=" background-gradient text-white font-bold mx-2 py-1 px-2 rounded-full"
+            href="{% url 'task-edit' task.pk %}"
+            >Edit</a
+          >
+          <a
+            class="background-gradient text-white font-bold py-1 px-2 rounded-full"
+            href="{% url 'task-delete' task.pk %}"
+            >Delete</a
+          >
+        </div>
+      </div>
+    </div>
+  </li>
 </ul>
-<hr>
-<button class="px-5 py-2 bg-blue-200 hover:cursor-pointer hover:bg-blue-300 rounded"><a href="{% url 'task-create' %}">CREATE TASK</a></button>
+{% endif %} {% endfor %}
+<div class="container py-10 px-10 mx-0 min-w-full flex flex-col items-center">
+    <a
+      class="background-gradient text-white font-bold py-2 px-4 rounded-full"
+      href="{% url 'task-create' %}"
+      >Create Task</a
+    >
+</div>
 {% endblock content %}

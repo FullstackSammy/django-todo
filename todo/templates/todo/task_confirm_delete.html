@@ -10,9 +10,9 @@
     <hr class="my-8">
     <form action="" method="POST">
         {% csrf_token %}
-        <input type="submit" value="Delete" class="px-5 py-2 rounded bg-red-200 hover:cursor-pointer hover:bg-red-300">
+        <input type="submit" value="Delete" class="px-5 py-2 rounded background-gradient hover:cursor-pointer">
     </form>
-    <button class="px-5 py-2 bg-blue-200 hover:cursor-pointer hover:bg-blue-300 rounded">
+    <button class=" background-gradient px-5 py-2 bg-blue-200 hover:cursor-pointer hover:bg-blue-300 rounded">
         <a href="{% url 'tasks' %}">Go Back</a>
     </button>
 {% endblock content %}
