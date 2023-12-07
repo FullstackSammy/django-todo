@@ -8,7 +8,12 @@
 <ul>
     {% for task in object_list  %}
         {% if not task.completed %}
-            <input type="checkbox" name="" id="">{{ task.title }}</input>
+            <li>
+                <input type="checkbox" name="" id="">{{ task.title }}</input>
+                <a href="{% url 'task-detail' task.pk %}">
+                Details
+                </a>
+            </li>
         {% endif %}
     {% endfor %}
 </ul>

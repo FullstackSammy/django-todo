@@ -1,3 +1,4 @@
-li {
-    text-decoration: none !important;
+ul {
+    list-style-type: none;
+    letter-spacing: 5px;
 }
