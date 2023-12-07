@@ -12,12 +12,12 @@
         {% if not task.completed %}
             <li>
                 <input type="checkbox" name="" id="" default:"true">{{ task.title }}</input>
-                <a href="{% url 'task-detail' task.pk %}">
-                Details
-                </a>
-                <a href="{% url 'task-edit' task.pk %}">
-                Edit
-                </a>
+                |
+                <div class="btn-group text-dark" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-primary"><a href="{% url 'task-detail' task.pk %}">Details</a></button>
+                    <button type="button" class="btn btn-primary"><a href="{% url 'task-edit' task.pk %}">Edit</a></button>
+                    <button type="button" class="btn btn-primary"><a href="{% url 'task-delete' task.pk %}">Delete</a></button>
+              </div>
             </li>
         {% endif %}
     {% endfor %}
@@ -31,16 +31,22 @@
             <s>
                 {{ task.title }}
             </s>
-            <a href="{% url 'task-detail' task.pk %}">
-                Details
-                </a>
-                <a href="{% url 'task-edit' task.pk %}">
-                Edit
-                </a>
+            |
+            <div class="btn-group text-dark" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-primary"><a href="{% url 'task-detail' task.pk %}">
+                    Details
+                    </a></button>
+                <button type="button" class="btn btn-primary"><a href="{% url 'task-edit' task.pk %}">
+                    Edit
+                    </a></button>
+                <button type="button" class="btn btn-primary"><a href="{% url 'task-delete' task.pk %}">
+                    Delete
+                </a></button>
+              </div>
         </li>
         {% endif %}
     {% endfor %}
 </ul>
 <hr>
-<button class="bg-green"><a href="{% url 'task-create' %}">CREATE TASK</a></button>
+<button class="px-5 py-2 bg-blue-200 hover:cursor-pointer hover:bg-blue-300 rounded"><a href="{% url 'task-create' %}">CREATE TASK</a></button>
 {% endblock content %}
