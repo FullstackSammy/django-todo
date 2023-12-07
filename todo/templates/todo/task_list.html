@@ -3,7 +3,17 @@
 <ul>
     {% for task in object_list  %}
         {% if not task.completed %}
-            <li><input type="checkbox" name="" id="">{{ task.title }}</li>
+            <input type="checkbox" name="" id="">{{ task.title }}</input>
+        {% endif %}
+    {% endfor %}
+</ul>
+
+<ul>
+    {% for task in object_list %}
+        {% if task.completed %}
+            <li>
+               <s>{{ task.title }}</s>
+            </li>
         {% endif %}
     {% endfor %}
 </ul>
