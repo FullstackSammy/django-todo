@@ -1,3 +1,8 @@
+{% extends "todo/base.html" %}
+{% load static %}
+
+
+{% block content %}
 <h1>TASKS</h1>
 
 <ul>
@@ -17,3 +22,4 @@
         {% endif %}
     {% endfor %}
 </ul>
+{% endblock content %}
