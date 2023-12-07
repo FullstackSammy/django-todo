@@ -1,27 +1,27 @@
 {% extends "todo/base.html" %} {% load static %} {% block content %}
-<h1 class="gradient-text">TASKS</h1>
+<h1 class="gradient-text text-xl">TASKS</h1>
 
-<hr hr class="my-2">
+<hr hr class="my-2 gradient-text">
 {% for task in object_list %} {% if not task.completed %}
 <ul role="list" class="divide-y divide-gray-100 ">
   <li class="flex justify-between gap-x-6 py-5 px-3 border border-gray-200 rounded dark:border-gray-700 my-2 background-gradient">
     <div class="flex min-w-0 gap-x-4 ">
       <div class="min-w-0 flex-auto">
-        <p class="text-sm font-semibold leading-6 text-gray-900">
-          <a href="{% url 'task-detail' task.pk %}">{{ task.title }}</a> 
-          |
+        <p class="text-m font-semibold leading-6 text-gray-900">
+          <a href="{% url 'task-detail' task.pk %}" class="text-white">{{ task.title }}</a> 
+           |
           <a
-            class=" border border-black-200 rounded dark:border-gray-700 background-gradient bg-blue-500 hover:bg-blue-700 text-white font-bold mx-2 py-1 px-2 rounded-full"
+            class=" border rounded dark:border-gray-700 background-gradient bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded-full"
             href="{% url 'task-edit' task.pk %}"
             >Edit</a
           >
           <a
-            class="background-gradient text-white font-bold py-1 px-2 rounded-full"
+            class="border background-gradient text-white font-bold py-1 px-2 rounded-full"
             href="{% url 'task-delete' task.pk %}"
             >Delete</a
           >
         </p>
-        <p class="mt-1 truncate text-xs leading-5 text-gray-500">
+        <p class="mt-1 truncate text-xs leading-5 text-black-500">
           Description: {{ task.description }}
         </p>
       </div>
@@ -36,15 +36,18 @@
     </div>
   </li>
 </ul>
-{% endif %} {% endfor %} {% for task in object_list %} {% if task.completed %}
-<h1 id="completed">COMPLETED TASKS</h1>
+{% endif %} {% endfor %} 
+
+
+<h1 id="completed" class="gradient-text text-xl">COMPLETED TASKS</h1>
+{% for task in object_list %} {% if task.completed %}
 <hr class="my-2">
 <ul role="list" class="divide-y divide-gray-100">
   <li class="flex justify-between gap-x-6 py-5 px-3 border border-gray-200 rounded dark:border-gray-700 my-2 background-gradient">
     <div class="flex min-w-0 gap-x-4">
       <div class="min-w-0 flex-auto">
-        <s class="text-sm font-semibold leading-6 text-gray-900">
-          {{ task.title }}
+        <s class="text-m font-semibold leading-6 text-gray-900">
+          <p class="text-white">{{ task.title }}</p>
         </s>
         <p class="mt-1 truncate text-xs leading-5 text-gray-500">
           Description: {{ task.description }}
@@ -55,12 +58,12 @@
       <div class="flex min-w-0 gap-x-4">
         <div class="min-w-0 flex-auto">
           <a
-            class=" background-gradient text-white font-bold mx-2 py-1 px-2 rounded-full"
+            class="border background-gradient text-white font-bold mx-2 py-1 px-2 rounded-full"
             href="{% url 'task-edit' task.pk %}"
             >Edit</a
           >
           <a
-            class="background-gradient text-white font-bold py-1 px-2 rounded-full"
+            class="border background-gradient text-white font-bold py-1 px-2 rounded-full"
             href="{% url 'task-delete' task.pk %}"
             >Delete</a
           >

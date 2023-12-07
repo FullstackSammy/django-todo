@@ -2,6 +2,7 @@
 {% load tailwind_filters %}
 
 {% block content %}
+<div class="sm:w-3/4 mx-auto sm:p-10 background-gradient ">    
     <h1 class="text-4xl">Create Task</h1>
     <hr class="my-4">
     <form action="" method="POST">
@@ -9,4 +10,6 @@
         {{ form|crispy }}
         <input type="submit" value="Save Task" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full hover:cursor-pointer">
     </form>
+</div>
+    
 {% endblock content %}
