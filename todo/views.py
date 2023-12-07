@@ -14,6 +14,7 @@ class HomeView(TemplateView):
 class TaskListView(ListView):
     model = Task
     
+    
 
 class TaskDetailView(DetailView):
     model = Task

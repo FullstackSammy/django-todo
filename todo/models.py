@@ -1,4 +1,7 @@
 from django.db import models
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 # Create your models here.
 
@@ -15,7 +18,8 @@ class Task(models.Model):
     deadline = models.DateField(null=True)
     completed = models.BooleanField(default=False)
     
-    
+    class Meta:
+        ordering = ['priority']
     
     def __str__(self):
         return f'{self.title} | Priority: {self.priority} | Deadline: {self.deadline}'
