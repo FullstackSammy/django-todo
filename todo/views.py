@@ -21,7 +21,7 @@ class TaskDetailView(DetailView):
 
 class TaskCreateView(CreateView):
     model = Task
-    fields = '__all__'
+    fields = ['title', 'description', 'priority', 'deadline']
     success_url = reverse_lazy('tasks')
 
 class TaskUpdateView(UpdateView):
