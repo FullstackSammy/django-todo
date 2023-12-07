@@ -1,0 +1,12 @@
+{% extends "todo/base.html" %}
+{% load static %}
+{% load tailwind_filters %}
+
+{% block content %}
+    <h1>Create Task</h1>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <input type="submit" value="Save Task">
+    </form>
+{% endblock content %}

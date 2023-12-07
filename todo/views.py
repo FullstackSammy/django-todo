@@ -1,5 +1,7 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView, ListView, DetailView
+from django.views.generic import TemplateView, ListView, DetailView, UpdateView, CreateView
+from django.urls import reverse_lazy
+
 from .models import Task
 
 # Create your views here.
@@ -15,4 +17,15 @@ class TaskListView(ListView):
 
 class TaskDetailView(DetailView):
     model = Task
+
+
+class TaskCreateView(CreateView):
+    model = Task
+    fields = '__all__'
+    success_url = reverse_lazy('tasks')
+
+class TaskUpdateView(UpdateView):
+    model = Task
+    fields = '__all__'
+    success_url = reverse_lazy('tasks')
     
