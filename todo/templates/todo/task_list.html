@@ -5,28 +5,42 @@
 {% block content %}
 <h1>TASKS</h1>
 
-<h2><a href="{% url 'task-create' %}">CREATE TASK</a></h2>
+<hr>
 
 <ul>
     {% for task in object_list  %}
         {% if not task.completed %}
             <li>
-                <input type="checkbox" name="" id="">{{ task.title }}</input>
+                <input type="checkbox" name="" id="" default:"true">{{ task.title }}</input>
                 <a href="{% url 'task-detail' task.pk %}">
                 Details
+                </a>
+                <a href="{% url 'task-edit' task.pk %}">
+                Edit
                 </a>
             </li>
         {% endif %}
     {% endfor %}
 </ul>
-
+<hr>
+<h1>COMPLETED TASKS</h1>
 <ul>
     {% for task in object_list %}
         {% if task.completed %}
-            <li>
-               <s>{{ task.title }}</s>
-            </li>
+        <li>
+            <s>
+                {{ task.title }}
+            </s>
+            <a href="{% url 'task-detail' task.pk %}">
+                Details
+                </a>
+                <a href="{% url 'task-edit' task.pk %}">
+                Edit
+                </a>
+        </li>
         {% endif %}
     {% endfor %}
 </ul>
+<hr>
+<button class="bg-green"><a href="{% url 'task-create' %}">CREATE TASK</a></button>
 {% endblock content %}
